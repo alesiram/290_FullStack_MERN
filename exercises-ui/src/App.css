@@ -1,0 +1,85 @@
+body {
+  background-color: rgb(255,255,255);
+  margin: 1%;
+  padding: 1%;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: black;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+table,td, th {
+  border: 1px solid #ddd;
+  padding: 2px;
+  padding-top: 9px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+
+tr:hover {background-color: #ddd;}
+
+th {
+  padding-top: 9px;
+  padding-bottom: 4px;
+  text-align: left;
+  background-color: #ea2ca1;
+  color: white;
+}
+.icons {
+  color: rgba(182, 118, 168, 0.375);
+  margin: 4px;
+  border: aqua;
+  
+}
+
+footer {
+
+    color:black;
+    margin-top: 34px;
+    font-size: 12px;
+}
+
+.customInput {
+  margin-bottom: 5px;
+}
+.editPage {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-content: space-between;
+  align-items: stretch;
+  color: #ea2ca1;
+  
+  
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+main {
+  margin-top: 1px;
+  
+}
+
+h6 {
+  color: #ea2ca1;
+  font-size: 15px;
+  margin: auto;
+
+}
