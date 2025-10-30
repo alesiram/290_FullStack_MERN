@@ -1,15 +1,15 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 // Get the mongoose object
 import mongoose from 'mongoose';
 
+const mongoURI = process.env.MONGODB_URI;
+
 // Prepare to the database myFristDatabase "exercise" _db in the MongoDB server running locally on port 27017
-mongoose.connect(
-    // 'mongodb+srv://vasquem2:FRESNO@cs290.njtrx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
-
-    // new cluster added to mongodb
-    'mongodb+srv://vasquem2:jNhSw3gpdJeyYSCM@cluster0.lyggw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
-    { useNewUrlParser: true }
-);
-
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("Connected to MongoDB Atlas"))
+  .catch(err => console.error("MongoDB connection error:", err.message));
 
 
 // Connect to to the database
