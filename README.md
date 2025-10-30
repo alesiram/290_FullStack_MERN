@@ -4,7 +4,8 @@ This is a **Full Stack MERN** project that allows users to track their exercises
 Users can **add**, **edit**, **delete**, and **view** exercises in one place.  
 The app uses **MongoDB**, **Express**, **React**, and **Node.js**.
 
-![Workout Tracker Screenshot](public/images/screenshot.png)
+![Workout Tracker Screenshot](exercises-ui/public/homeImg.png)
+
 
 ---
 
