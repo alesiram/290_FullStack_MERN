@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 
 // Prepare to the database myFristDatabase "exercise" _db in the MongoDB server running locally on port 27017
 mongoose.connect(
-    // 'mongodb+srv://mvsquz:FRESNO@cs290.njtrx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+    // 'mongodb+srv://vasquem2:FRESNO@cs290.njtrx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
 
     // new cluster added to mongodb
     'mongodb+srv://vasquem2:jNhSw3gpdJeyYSCM@cluster0.lyggw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
@@ -26,8 +26,8 @@ db.once('open', () => {
 const exerciseSchema = mongoose.Schema({
     name: { type: String, required: true },
     reps: { type: Number, required: true },
-    weight: { type: Number, required: true },
-    unit: { type: String, required: true },
+    weight: { type: Number, default: 0, min: 0},
+    unit: { type: String},
     date: {type: Date, required: true}
 });
 
