@@ -22,10 +22,13 @@ export default function CreateExercisePage() {
 
   const history = useHistory();
 
+  // ✅ Add this line: use your environment variable or fallback
+  const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:3000";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // normalize values 
+    // normalize values
     const w = weight === "" ? 0 : Number(weight);
     const u = unit?.trim() || (w > 0 ? "kg" : "N/A");
 
@@ -34,11 +37,12 @@ export default function CreateExercisePage() {
       reps: Number(reps),
       weight: w,
       unit: u,
-      date, 
+      date,
     };
 
     try {
-      const res = await fetch("/exercises", {
+      // ✅ use the full API URL here
+      const res = await fetch(`${API_BASE}/exercises`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newExercise),
@@ -75,7 +79,12 @@ export default function CreateExercisePage() {
         <Typography
           variant="h5"
           align="center"
-          sx={{ mb: 3, fontWeight: 600, color: "#f8bcd0", letterSpacing: ".5px" }}
+          sx={{
+            mb: 3,
+            fontWeight: 600,
+            color: "#f8bcd0",
+            letterSpacing: ".5px",
+          }}
         >
           Add Exercise
         </Typography>

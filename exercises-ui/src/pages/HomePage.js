@@ -24,11 +24,15 @@ export default function HomePage({ setExerciseToEdit }) {
   const [loading, setLoading] = useState(true);
   const history = useHistory();
 
+  // use env first, then localhost
+  const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:3000";
+  console.log("API_BASE in HomePage =", API_BASE);
+
   // Load workouts
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch("/exercises"); // keep your existing endpoint
+        const res = await fetch(`${API_BASE}/exercises`);
         const data = await res.json();
         setExercises(Array.isArray(data) ? data : []);
       } catch (e) {
@@ -37,12 +41,14 @@ export default function HomePage({ setExerciseToEdit }) {
         setLoading(false);
       }
     })();
-  }, []);
+  }, [API_BASE]);
 
   // Delete workout
   const onDelete = async (id) => {
     if (!window.confirm("Delete this workout?")) return;
-    const res = await fetch(`/exercises/${id}`, { method: "DELETE" });
+    const res = await fetch(`${API_BASE}/exercises/${id}`, {
+      method: "DELETE",
+    });
     if (res.status === 204) {
       setExercises((prev) => prev.filter((e) => e._id !== id));
     } else {
@@ -66,9 +72,14 @@ export default function HomePage({ setExerciseToEdit }) {
 
   // Summary
   const totalWorkouts = exercises.length;
-  const totalReps = exercises.reduce((sum, e) => sum + (Number(e.reps) || 0), 0);
+  const totalReps = exercises.reduce(
+    (sum, e) => sum + (Number(e.reps) || 0),
+    0
+  );
   const maxWeight =
-    exercises.length > 0 ? Math.max(...exercises.map((e) => Number(e.weight) || 0)) : 0;
+    exercises.length > 0
+      ? Math.max(...exercises.map((e) => Number(e.weight) || 0))
+      : 0;
 
   return (
     <Box sx={{ mt: 3 }}>
@@ -110,7 +121,7 @@ export default function HomePage({ setExerciseToEdit }) {
         </Grid>
       </Grid>
 
-      {/* ---------- Data Table ---------- */}
+      {/* -Data Table- */}
       <Paper sx={{ mt: 5, overflow: "hidden" }}>
         <TableContainer>
           <Table size="small">

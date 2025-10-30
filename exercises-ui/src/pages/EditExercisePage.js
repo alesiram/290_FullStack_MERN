@@ -27,6 +27,9 @@ function toDateInputValue(d) {
 export default function EditExercisePage({ exerciseToEdit, setExerciseToEdit }) {
   const history = useHistory();
 
+  // env first, then localhost
+  const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:3000";
+
   // Safe fallback so hooks aren't conditional
   const ex = exerciseToEdit || {
     name: "",
@@ -65,7 +68,8 @@ export default function EditExercisePage({ exerciseToEdit, setExerciseToEdit }) 
       date, // YYYY-MM-DD
     };
 
-    const res = await fetch(`/exercises/${ex._id}`, {
+    // ✅ use API_BASE here
+    const res = await fetch(`${API_BASE}/exercises/${ex._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(edited),
