@@ -2,10 +2,12 @@
   "name": "exercises",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "exercises_controller.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon exercises_controller.mjs"
+    "start": "node exercises_controller.mjs",      
+    "dev": "nodemon exercises_controller.mjs",     
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
