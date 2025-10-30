@@ -1,7 +1,27 @@
+:root{
+  --pistachio: #a8d5ba;
+  --pistachio-100: #b8e0c8;
+  --blush: #f8bcd0;
+  --blush-100: #fde0ea;
+  --bg: #fffafc;        /* page background */
+  --paper: #ffffff;     /* cards/panels */
+  --ink: #2e2e2e;       /* primary text */
+  --ink-2: #5a5a5a;     /* secondary text */
+  --border: #e8e8e8;
+  --row-even: #faf6f8;
+  --row-hover: #fef1f5;
+  --shadow-sm: 0 3px 10px rgba(248, 188, 208, 0.25);
+  --shadow-md: 0 6px 18px rgba(168, 213, 186, 0.28);
+  --radius: 12px;
+}
+
 body {
-  background-color: rgb(255,255,255);
+  background-color: var(--bg);
   margin: 1%;
   padding: 1%;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .App {
@@ -15,71 +35,136 @@ body {
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: black;
+  color: var(--ink);
 }
 
-.App-link {
-  color: #61dafb;
+a, .App-link {
+  color: #7a4a86;             
+  text-decoration: none;
+  font-weight: 500;
+}
+a:hover, .App-link:hover { text-decoration: underline; }
+/* TABLE  */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--paper);
+  border-radius: var(--radius);
+  overflow: hidden;            /* rounded corners */
+  box-shadow: var(--shadow-sm);
+  margin: 0 auto;             
 }
 
-table,td, th {
-  border: 1px solid #ddd;
-  padding: 2px;
-  padding-top: 9px;
+table, td, th {
+  border: 1px solid var(--border);
+  padding: 10px;
 }
-
-tr:nth-child(even){background-color: #f2f2f2;}
-
-tr:hover {background-color: #ddd;}
 
 th {
-  padding-top: 9px;
-  padding-bottom: 4px;
   text-align: left;
-  background-color: #ea2ca1;
-  color: white;
+  background-color: var(--blush);
+  color: #4a4a4a;
+  font-weight: 600;
 }
+
+tr:nth-child(even){ background-color: var(--row-even); }
+tr:hover{
+  background-color: var(--row-hover);
+  transition: background-color .2s ease;
+}
+
+/* Action icons inside table */
+td .icon-btn,
+td .icon {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+/*  edit/delete colors */
+td .edit { color: var(--pistachio); }
+td .delete { color: var(--blush); }
+
+/* CARDS*/
+.card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 18px;
+}
+
+.card--lift:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); transition: all .15s ease; }
+
+/* EXISTING CLASSES*/
 .icons {
-  color: rgba(182, 118, 168, 0.375);
+  color: rgba(122, 74, 134, 0.35); /* softer plum */
   margin: 4px;
-  border: aqua;
-  
+  border: none;
 }
 
 footer {
-
-    color:black;
-    margin-top: 34px;
-    font-size: 12px;
+  color: var(--ink);
+  margin-top: 34px;
+  font-size: 12px;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
 }
 
-.customInput {
-  margin-bottom: 5px;
-}
+.customInput { margin-bottom: 5px; }
+
+/* Edit page accent */
 .editPage {
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
   align-content: space-between;
   align-items: stretch;
-  color: #ea2ca1;
-  
-  
+  color: var(--blush);
 }
 
+/* Simple nav row */
 nav {
   display: flex;
   justify-content: space-around;
+  gap: 12px;
+  margin: 8px 0 12px;
 }
 
-main {
-  margin-top: 1px;
-  
-}
+/* Main spacing */
+main { margin-top: 1px; }
 
+/* Section subtitle */
 h6 {
-  color: #ea2ca1;
+  color: var(--blush);
   font-size: 15px;
   margin: auto;
+}
 
+/* ========== BUTTON HELPERS ========== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  font-weight: 500;
+  transition: transform .08s ease, box-shadow .15s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+
+.btn--primary {
+  background: var(--pistachio);
+  color: #1f2a24;
+  border-color: transparent;
+}
+.btn--secondary {
+  background: var(--blush);
+  color: #4a4a4a;
+  border-color: transparent;
 }
